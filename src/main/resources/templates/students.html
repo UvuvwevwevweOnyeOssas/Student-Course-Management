@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #students-static-resources},
+                                                ~{:: #students-header},
+                                                ~{:: #students-nav},
+                                                ~{:: #students-main-content},  
+                                                ~{:: #students-footer}
+                                               )}">
+	<head>
+		<title>
+			Spring MVC with JPA-MySQL and Thymeleaf
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 /">
+		
+		
+	</head>
+	<body>
+		<div id="students-header">
+			Student List         </div>
+		<div id="students-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Nav</div>
+		<div id="students-main-content">
+			<a href="/coursemgt/newStudent">Create New Student</a>
+			<table border="1" cellpadding="10">
+				<thead>
+					<tr>
+						<th>Student ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="student :${listStudents}"
+					th:style="${studentStat.odd}? 'font-weight:bold;'"
+					th:alt-title="${studentStat.even}?'even':'odd'">
+						<td th:text="${student.Id}">Student ID </td>
+						<td th:text="${student.name}"> Name</td>
+						<td th:text="${student.email}">Email</td>
+						<td><a th:href="@{/coursemgt/editStudent/{id}(id=${student.Id})}">Edit</a>
+						&nbsp;&nbsp;&nbsp;
+						<a th:href="@{/coursemgt/deleteStudent/{id}(id=${student.Id})}">delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="students-footer" th:replace="~{fragments/app-fragments::copyright}">Footer</div>
+	</body>
+</html>

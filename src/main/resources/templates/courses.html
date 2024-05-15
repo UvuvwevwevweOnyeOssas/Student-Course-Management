@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #students-static-resources},
+                                                ~{:: #students-header},
+                                                ~{:: #students-nav},
+                                                ~{:: #students-main-content},  
+                                                ~{:: #students-footer}
+                                               )}">
+	<head>
+		<title>
+			Spring MVC with JPA-MySQL and Thymeleaf
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 /">
+		
+		
+	</head>
+	<body>
+		<div id="students-header">
+			Courses List         </div>
+		<div id="students-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Nav</div>
+		<div id="students-main-content">
+			<a href="/coursemgt/newCourse">Create New Course</a>
+			<table border="1" cellpadding="10">
+				<thead>
+					<tr>
+						<th>Course ID</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Code</th>
+						<th>End_Date</th>
+						<th>Start_Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="course :${listCourses}"
+					th:style="${courseStat.odd}? 'font-weight:bold;'"
+					th:alt-title="${courseStat.even}?'even':'odd'">
+						<td th:text="${course.Id}">Course ID </td>
+						<td th:text="${course.title}">Title </td>
+						<td th:text="${course.description}">Description </td>
+						<td th:text="${course.code}">Code</td>
+						<td th:text="${course.endDate}">End_Date</td>
+						<td th:text="${course.startDate}">Start_Date</td>
+						<td><a th:href="@{/coursemgt/editCourse/{id}(id=${course.Id})}">Edit</a>
+						&nbsp;&nbsp;&nbsp;
+						<a th:href="@{/coursemgt/deleteCourse/{id}(id=${course.Id})}">delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="students-footer" th:replace="~{fragments/app-fragments::copyright}">Footer</div>
+	</body>
+</html>

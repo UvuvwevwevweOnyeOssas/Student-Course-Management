@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>App Fragments</title>
+</head>
+<body>
+    <!-- Default Navigator -->
+    <ul th:fragment = "nav-default">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/coursemgt/students}">Students</a></li>
+        <li><a th:href="@{/about}">About</a></li>
+    </ul>
+    <!-- Admin Navigator -->
+    <ul th:fragment = "nav-admin">
+        <li><a th:href="@{/admin/students}">Student Management</a></li>
+        <li><a th:href="@{/admin/courses}">Course Management</a></li>
+    </ul>
+    <div th:fragment="copyright">
+      &copy; iat.edu.mm SE Batch-1
+    </div>
+</body>
+</html>

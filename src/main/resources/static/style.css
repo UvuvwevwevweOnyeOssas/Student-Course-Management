@@ -1,0 +1,37 @@
+/* Applies to the entire body of the HTML document (except where overridden by more specific
+selectors). */
+body {
+  margin: 25px;
+  background-color: rgb(240,240,240);
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Applies to all <h1>...</h1> elements. */
+h1 {
+  font-size: 25px;
+  font-weight: normal;
+  margin-top: 5px;
+  color:green;
+  text-align: center
+}
+label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left
+    }
+input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px
+    }
+input[type=radio] {
+        margin-left: 45px
+    }
+ input[type=checkbox] {
+        margin-right: 190px
+    }  
+ button {
+        padding: 5px;
+        margin: 10px
+    }

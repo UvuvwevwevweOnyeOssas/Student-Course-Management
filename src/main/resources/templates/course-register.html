@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #students-static-resources},
+                                                ~{:: #students-header},
+                                                ~{:: #students-nav},
+                                                ~{:: #students-main-content},  
+                                                ~{:: #students-footer}
+                                               )}">
+	<head>
+		<title>
+			Spring MVC with JPA-MySQL and Thymeleaf
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 /">
+		
+		
+	</head>
+	<body>
+		<div id="students-header">
+			Course List         </div>
+		<div id="students-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Nav</div>
+		<div id="students-main-content">
+		<form action="#" th:action="@{/coursemgt/courseRegSave}" method="post" th:object="${course}">
+			<table cellpadding="10" align="center">
+				<tr> <td><label>course Title:</label></td> 
+				   <td><select name="title">
+					   <option th:each="title:${titles}" th:text="${title}"
+				   </select></td>
+				</tr>
+			<tr> <td><label>Student ID:</label></td> 
+			<td><select name="id">
+					   <option th:each="id:${ids}" th:text="${id}"
+				   </select></td>
+			</tr>
+			<tr> <td>	<button type="submit"> Register</button> </td> </tr>
+		
+			</table>
+		</form>
+		
+		</div>
+		<div id="students-footer" th:replace="~{fragments/app-fragments::copyright}">Footer</div>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="html://www.thymeleaf.org">
+	<head>
+		<title>
+			Spring.MVC.Title
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 /">
+		<link rel="stylesheet" type="text/css" media="all" href="../../css/style.css"
+		th.href="@{/css/style.css}" />
+	</head>
+	<body>
+		<h1>Greeting Page</h1>
+		<P th:text="#{home.welcome}">Welcome to Our Spring MVC Demo!</P>
+		<p>Today is: <span th:text="${today}"></span></p>
+	</body>
+</html>

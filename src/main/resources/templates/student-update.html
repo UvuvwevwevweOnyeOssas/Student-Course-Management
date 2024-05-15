@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #students-static-resources},
+                                                ~{:: #students-header},
+                                                ~{:: #students-nav},
+                                                ~{:: #students-main-content},  
+                                                ~{:: #students-footer}
+                                               )}">
+	<head>
+		<title>
+			Spring MVC with JPA-MySQL and Thymeleaf
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 /">
+		
+		
+	</head>
+	<body>
+		<div id="students-header">
+		Update	Student Form       </div>
+		<div id="students-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Nav</div>
+		<div id="students-main-content">
+		<form action="#" th:action="@{/coursemgt/updateStudent/{id}(id=${student.Id})}" method="post" th:object="${student}">
+			<label>Student Id:</label>
+			<input type="text" th:field="*{id}" readonly="true"/><br/>
+			<label>Full name:</label>
+			<input type="text" th:field="*{name}" /><br/>
+			<label>E-mail:</label>
+			<input type="text" th:field="*{email}" readonly="true"/><br/>
+			<label>Password:</label>
+			<input type="password" th:field="*{password}" /><br/>
+			<label>Birthday:</label>
+			<input type="date" th:field="*{birthDate}" /><br/>
+			<label>Gender:</label>
+			<input type="radio" th:field="*{gender}" value="Male" />Male
+			<input type="radio" th:field="*{gender}" value="Female" />Female
+			<br/>
+			<button type="submit"> Update</button>
+		
+		
+		</form>
+		</div>
+		<div id="students-footer" th:replace="~{fragments/app-fragments::copyright}">Footer</div>
+	</body>
+</html>
